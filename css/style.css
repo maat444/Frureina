@@ -1,0 +1,859 @@
+:root {
+    --verde-oscuro: #034905;
+    --verde-medio: #27b82c;
+    --verde-claro: #81c784;
+    --verde-muy-claro: #e8f5e9;
+    --texto-oscuro: #1b5e20;
+    --texto-claro: #ffffff;
+    --texto-resaltado: #e8eb46;
+    --texto-decorativo: #ec1313;
+    --background-decorativo: #f04343;
+    --background-decorativo-hover: #f8fc28;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    padding-top: 76px;
+    /* Para compensar la navbar fija */
+}
+
+h1,
+h2,
+h3,
+h4,
+.navbar-brand {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--texto-oscuro);
+}
+
+.navbar {
+    background-color: rgba(10, 49, 11, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 15px 0;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    color: var(--texto-claro) !important;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+@keyframes yellowGlow {
+    0% {
+        filter: drop-shadow(0 0 2px rgba(255, 235, 59, 0.4));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 10px rgba(255, 235, 59, 1.0));
+    }
+
+    100% {
+        filter: drop-shadow(0 0 2px rgba(255, 235, 59, 0.4));
+    }
+}
+
+.nav-item .nav-link {
+    color: var(--texto-claro);
+    font-weight: 500;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.nav-item .nav-link:hover {
+    color: var(--verde-claro);
+    text-shadow:
+    0 0 5px rgba(26, 245, 26, 0.9),
+    0 0 10px rgba(0, 255, 0, 0.7),
+    0 0 20px rgba(97, 250, 58, 0.959);
+}
+
+/* ESTILOS PARA EL LOGO - CORREGIDOS */
+.logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    /* Esto evita que la imagen se salga del contenedor */
+}
+
+.logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+    animation: yellowGlow 2s infinite ease-in-out;
+}
+
+/* ESTILOS PARA EL HERO CON IMAGEN PERSONALIZADA */
+.hero-section {
+    background: linear-gradient(rgba(46, 125, 50, 0.45), rgba(76, 175, 80, 0.45)), url('../images/frutasFrureina.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    padding: 100px 0;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+/* Si la imagen no se carga, mantener un color de fondo */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--verde-oscuro);
+    opacity: 0.5;
+    z-index: -1;
+}
+
+/* Contenedor para la imagen del limón en el hero */
+.hero-image-container {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 0px;
+}
+
+/* Estilo para la imagen del limón en el hero */
+.hero-lemon-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    transition: transform 0.5s ease;
+}
+
+/* Efecto hover para la imagen del limón */
+.hero-image-container:hover .hero-lemon-img {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Efecto automático para dispositivos táctiles cuando está visible */
+.hero-image-container.is-visible .hero-lemon-img {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Para dispositivos móviles */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 80px 0;
+        /* Opcional: Puedes cambiar la imagen de fondo para móvil si es necesario */
+        background-image: linear-gradient(rgba(46, 125, 50, 0.85), rgba(76, 175, 80, 0.85)), url('../images/frutasFrureina.webp');
+    }
+
+    .hero-section .row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hero-section .col-lg-7 {
+        order: 1;
+        margin-bottom: 30px;
+    }
+
+    .hero-section .col-lg-5 {
+        order: 2;
+    }
+
+    .hero-image-container {
+        width: 220px;
+        height: 220px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+}
+
+.title2 {
+    /* Solo para navegadores modernos: haz que el texto muestre el gradiente */
+    background: linear-gradient(90deg, #07491b, #38f831, #faea0f, #fdd210);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+     /* Animación de desplazamiento del gradiente */
+    background-size: 200% 100%; /* doble tamaño para deslizamiento suave */
+    animation: gradientMove 6s linear infinite;
+}
+
+.section-title {
+    position: relative;
+    margin-bottom: 50px;
+    padding-bottom: 15px;
+
+    /* Solo para navegadores modernos: haz que el texto muestre el gradiente */
+    background: linear-gradient(90deg, #07491b, #38f831, #faea0f, #fdd210);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+     /* Animación de desplazamiento del gradiente */
+    background-size: 200% 100%; /* doble tamaño para deslizamiento suave */
+    animation: gradientMove 6s linear infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background-color: var(--verde-medio);
+    bottom: 0;
+    left: 0;
+}
+
+.section-title.text-center::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+p .destacado {
+    color: var(--verde-oscuro);
+    font-size: 1.5em; /* ajusta el tamaño según necesites */
+    font-weight: bold; /* opcional: para que destaque más */
+    text-shadow:
+    0 0 5px rgba(37, 230, 101, 0.925),
+    0 0 10px rgba(233, 49, 17, 0.918),
+    0 0 20px rgba(242, 245, 52, 0.918);
+}
+
+p .destacado2 {
+    color: var(--verde-medio);
+    font-size: 1.2em; /* ajusta el tamaño según necesites */
+    font-weight: bold; /* opcional: para que destaque más */
+    text-shadow:
+    0 0 5px rgba(246, 250, 34, 0.918),
+    0 0 10px rgba(27, 253, 38, 0.952),
+    0 0 20px rgba(18, 240, 129, 0.938);
+}
+
+.card-producto {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.card-producto:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(46, 128, 21, 0.884);
+}
+
+.card-img-top {
+    height: 220px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 25px;
+}
+
+.card-body-custom {
+    background-color: #f0faf2;
+    /* Color de la pared de la targeta en verde claro */
+}
+
+.card-title {
+    color: var(--verde-oscuro);
+    font-weight: 600;
+}
+
+.precio {
+    color: var(--verde-medio);
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.btn-frureina {
+    background-color: var(--verde-medio);
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent; /* Remover highlight en móviles */
+}
+
+/* Hover solo en dispositivos con cursor (desktop) */
+@media (hover: hover) {
+    .btn-frureina:hover {
+        background-color: var(--background-decorativo);
+        color: var(--texto-claro);
+        transform: scale(1.05);
+    }
+}
+
+/* Active para dispositivos táctiles - efecto temporal */
+.btn-frureina:active {
+    background-color: var(--background-decorativo);
+    color: var(--texto-claro);
+    transform: scale(1.05);
+}
+
+/* Focus - mantener color original después de tocar */
+.btn-frureina:focus,
+.btn-frureina:focus:active {
+    background-color: var(--verde-medio) !important;
+    color: white !important;
+    transform: scale(1);
+    outline: none;
+}
+
+/* Focus con box-shadow solo en desktop */
+@media (hover: hover) {
+    .btn-frureina:focus {
+        box-shadow: 0 0 0 0.2rem rgba(39, 184, 44, 0.25);
+    }
+}
+
+.btn-outline-frureina {
+    background-color: transparent;
+    border: 2px solid var(--verde-medio);
+    color: var(--verde-medio);
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent; /* Remover highlight en móviles */
+}
+
+/* Hover solo en dispositivos con cursor (desktop) */
+@media (hover: hover) {
+    .btn-outline-frureina:hover {
+        background-color: var(--verde-medio);
+        color: white;
+    }
+}
+
+/* Active para dispositivos táctiles - efecto temporal */
+.btn-outline-frureina:active {
+    background-color: var(--verde-medio);
+    color: white;
+}
+
+/* Focus - mantener estilo original después de tocar */
+.btn-outline-frureina:focus,
+.btn-outline-frureina:focus:active {
+    background-color: transparent !important;
+    border-color: var(--verde-medio) !important;
+    color: var(--verde-medio) !important;
+    outline: none;
+}
+
+/* Focus con box-shadow solo en desktop */
+@media (hover: hover) {
+    .btn-outline-frureina:focus {
+        box-shadow: 0 0 0 0.2rem rgba(39, 184, 44, 0.25);
+    }
+}
+
+.feature-box {
+    padding: 30px 20px;
+    border-radius: 12px;
+    background-color: var(--verde-muy-claro);
+    text-align: center;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.feature-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: var(--verde-medio);
+    margin-bottom: 20px;
+}
+
+footer {
+    background-color: var(--verde-oscuro);
+    color: white;
+    padding: 60px 0 20px;
+    margin-top: 60px;
+}
+
+.footer-logo {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    /* espaciado entre logo y texto */
+}
+
+.brand-logo {
+    width: 40px;
+    /* ajusta al tamaño deseado */
+    height: auto;
+}
+
+.footer-name {
+    color: var(--texto-claro) !important;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.whatsapp-link {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-link:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+}
+
+.whatsapp-link span {
+    display: block;
+}
+
+.copyright {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    margin-top: 40px;
+}
+
+.banner-promocional {
+    background-color: var(--verde-claro);
+    padding: 30px;
+    border-radius: 12px;
+    margin: 40px 0;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Estilos para el Modal de Listado de Productos */
+.modal-content {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+}
+
+#modalHeader {
+    background-color: var(--verde-medio);
+    color: white;
+    border-bottom: none;
+}
+
+#modalHeader .modal-title {
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+#modalBody {
+    padding: 20px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+#productList {
+    list-style: none;
+    padding: 0;
+}
+
+#productList .list-group-item {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    color: var(--texto-oscuro);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+#productList .list-group-item:hover {
+    background-color: var(--verde-muy-claro);
+    border-color: var(--verde-medio);
+    transform: translateX(5px);
+}
+
+.modal-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #e0e0e0;
+}
+
+.modal-footer .btn-secondary {
+    background-color: var(--verde-medio);
+    border: none;
+}
+
+.modal-footer .btn-secondary:hover {
+    background-color: var(--verde-oscuro);
+}
+
+/* ============= MEDIA QUERIES RESPONSIVE ============= */
+
+/* Tablets pequeñas (hasta 576px) */
+@media (max-width: 575.98px) {
+    body {
+        padding-top: 60px;
+    }
+
+    .hero-section {
+        padding: 60px 0;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+
+    .lead {
+        font-size: 0.95rem;
+    }
+
+    .section-title {
+        margin-bottom: 30px;
+        padding-bottom: 10px;
+    }
+
+    .section-title::after {
+        width: 60px;
+        height: 3px;
+    }
+
+    .card-producto {
+        margin-bottom: 15px;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+
+    .card-img-top {
+        height: 180px;
+    }
+
+    .feature-box {
+        padding: 20px 15px;
+        margin-bottom: 15px;
+    }
+
+    .feature-icon {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    .feature-box h4 {
+        font-size: 1.1rem;
+    }
+
+    .feature-box p {
+        font-size: 0.9rem;
+    }
+
+    .banner-promocional {
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    .banner-promocional h3 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+
+    .banner-promocional p {
+        font-size: 0.95rem;
+    }
+
+    footer {
+        padding: 40px 0 15px;
+        margin-top: 40px;
+    }
+
+    .footer-name {
+        font-size: 1.4rem;
+    }
+
+    .footer-brand {
+        margin-bottom: 20px;
+    }
+
+    footer h4 {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+    }
+
+    footer p {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+    }
+
+    .copyright {
+        padding-top: 15px;
+        margin-top: 25px;
+    }
+
+    .copyright p {
+        font-size: 0.85rem;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .modal-lg {
+        max-width: 90vw;
+    }
+
+    #modalBody {
+        max-height: 400px;
+        padding: 15px;
+    }
+
+    .btn-lg {
+        padding: 8px 16px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Tablets medianas (576px a 768px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    body {
+        padding-top: 70px;
+    }
+
+    .hero-section {
+        padding: 80px 0;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .lead {
+        font-size: 0.98rem;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-img-top {
+        height: 200px;
+    }
+
+    .section-title {
+        margin-bottom: 40px;
+    }
+
+    .feature-box {
+        padding: 25px 15px;
+    }
+
+    .banner-promocional {
+        padding: 25px;
+    }
+
+    footer {
+        padding: 50px 0 20px;
+    }
+
+    #modalBody {
+        max-height: 450px;
+    }
+}
+
+/* Tablets grandes y desktops pequeños (768px a 992px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    body {
+        padding-top: 76px;
+    }
+
+    .hero-section {
+        padding: 100px 0;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .card-body {
+        padding: 22px;
+    }
+
+    .card-img-top {
+        height: 210px;
+    }
+
+    .feature-box {
+        padding: 28px 20px;
+    }
+
+    .banner-promocional {
+        padding: 28px;
+    }
+
+    .banner-promocional h3 {
+        font-size: 1.6rem;
+    }
+
+    #modalBody {
+        max-height: 500px;
+    }
+}
+
+/* Desktops (992px en adelante) */
+@media (min-width: 992px) {
+    body {
+        padding-top: 76px;
+    }
+
+    .hero-section {
+        padding: 120px 0;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .card-body {
+        padding: 25px;
+    }
+
+    .card-img-top {
+        height: 220px;
+    }
+
+    .feature-box {
+        padding: 30px 20px;
+    }
+
+    .banner-promocional {
+        padding: 30px;
+    }
+
+    #modalBody {
+        max-height: 500px;
+    }
+}
+
+/* Ultra-wide displays (1400px en adelante) */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .feature-box {
+        padding: 35px 25px;
+    }
+}
+
+/* Orientación horizontal en dispositivos pequeños */
+@media (max-width: 576px) and (orientation: landscape) {
+    .hero-section {
+        padding: 40px 0;
+    }
+
+    .hero-image-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .section-title {
+        margin-bottom: 20px;
+    }
+}
+
+/* Ajustes para navegación en móvil */
+@media (max-width: 991.98px) {
+    .navbar {
+        padding: 10px 0;
+    }
+
+    .navbar-brand {
+        font-size: 1.4rem;
+    }
+
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .navbar-collapse {
+        padding-top: 15px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-link {
+        padding: 10px 0 !important;
+        font-weight: 500;
+    }
+}
